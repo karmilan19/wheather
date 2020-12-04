@@ -143,7 +143,33 @@ export class WeatherComponent implements OnInit {
   }
 
   doStuff(){
-    
+    if( this.location1 != '' && this.location1 !== undefined ){
+      this.getWeatherReport(this.location1, 1)
+    }
+    if( this.location2 != '' && this.location2 !== undefined ){
+      this.getWeatherReport(this.location2, 2)
+    }
+    if( this.location3 != '' && this.location3 !== undefined ){
+      this.getWeatherReport(this.location3, 3)
+    }
+    if( this.location4 != '' && this.location4 !== undefined ){
+      this.getWeatherReport(this.location4, 4)
+    }
+    if( this.location5 != '' && this.location5 !== undefined ){
+      this.getWeatherReport(this.location5, 5)
+    }
+    if( this.location6 != '' && this.location6 !== undefined ){
+      this.getWeatherReport(this.location6, 6)
+    }
+    if( this.location7 != '' && this.location7 !== undefined ){
+      this.getWeatherReport(this.location7, 7)
+    }
+    if( this.location8 != '' && this.location8 !== undefined ){
+      this.getWeatherReport(this.location8, 8)
+    }
+    if( this.location9 != '' && this.location9 !== undefined ){
+      this.getWeatherReport(this.location9, 9)
+    }    
     console.log( '333' );
 }
 
