@@ -28,7 +28,7 @@
 .container-op > .card {
 	display: flex;
 	flex-direction: column;
-	background: #f443368c;
+	background: #2318418c;
 
 	overflow: hidden;
 
@@ -51,7 +51,9 @@
 }
 
 .container-op > .card:nth-child(2):hover {
-	margin-left: -20px;
+    margin-left: -90px;
+    width: 300px;
+    z-index: 9999;
 }
 
 .container-op > .card-body {
@@ -106,12 +108,13 @@ span#relevant_info > strong {
     font-weight: 800;
 }
 .text-red{
-    top: 75%;
+    top: 68%;
     position: absolute;
-    left: 45%;
+    left: 30%;
     color: red;
     font-size: small;
     font-style: oblique;
+    z-index: 999;
 }
 
 .container-fluid {
@@ -125,3 +128,7 @@ span#relevant_info > strong {
         padding-top: 50px;
     }
 }
+
+.card {
+    color: #ffffff !important;
+} 
