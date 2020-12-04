@@ -68,7 +68,7 @@ export class WeatherComponent implements OnInit {
 
     console.log( location )
     
-    this.http.get<any>('http://api.openweathermap.org/data/2.5/weather?q='+location+'&appid=f62ee3c16258619e3299c577cb68fb28&units=Metric').subscribe(data => {
+    this.http.get<any>('https://api.openweathermap.org/data/2.5/weather?q='+location+'&appid=f62ee3c16258619e3299c577cb68fb28&units=Metric').subscribe(data => {
       this.errorRep(type, 0)
       switch(type){
         case 1:
