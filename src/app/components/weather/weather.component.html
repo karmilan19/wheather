@@ -1,0 +1,738 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <p>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle Weather Report</button>
+        </p>
+  
+        <div class="row collapse multi-collapse show" id="multiCollapseExample1">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="container-op">
+  
+                  <div class="card">
+                      
+                      <span class="text-red" *ngIf='location1Err' > Wrong city name </span>
+                      <main>
+                          <div class="srch_wrpr">
+                              <span class="text-red" *ngIf='location1Err' > Wrong city name </span>
+                              <input type="checkbox" name="" class="checkbox">
+                              <div class="srch_sb_cnt">
+                                  <input type="text" name="text_bar" [(ngModel)]="location1" id="" class="sech_txt_inpt" placeholder="Type to search...">
+                                  <button class="srch_btn" (click)="getWeatherReport(location1, 1)">
+                                      <i class="fa fa-search" aria-hidden="true"></i>
+                                  </button>
+                                  
+                              </div>
+                              
+                          </div>
+                        </main>
+              
+                      <div class="card-body" id="bg-body">
+              
+                          <h1 class="card-title">
+                              <span id="header">{{this.location1 | titlecase}} </span>
+                              <span id="subText">{{this.location1Report?.main.temp}}˚C</span>
+                              
+                              <img *ngIf="this.location1Report" src="http://openweathermap.org/img/wn/{{this.location1Report?.weather[0].icon}}@2x.png">
+                          </h1>
+  
+                          <div class="middle">
+                              <div class="text">John Doe</div>
+                            </div>
+              
+                          <p class="card-text">
+                              <span id="relevant_info">
+                                  Its <strong>{{this.location1Report?.weather[0].main}}</strong> here !!!
+                              </span>
+                          </p>
+              
+                      </div>
+              
+                      <svg class="bg-svg" width="350" height="200">
+                          <g>
+                              <rect fill="none" id="canvas_background" height="202" width="352" y="-1" x="-1" />
+                              <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+                                  <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%" />
+                              </g>
+                          </g>
+                          <g>
+                              <ellipse ry="65" rx="286.5" id="svg_3" cy="162.5" cx="181" stroke-width="1.5" />
+                              <rect stroke="null" id="svg_4" height="47" width="12" y="74.5" x="68.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                              <path id="svg_6" d="m51.2175,87.27062l23,-35l23,35l-46,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="null" />
+                              <path stroke="null" id="svg_7" d="m52.2175,70.27062l21.5,-35l21.5,35l-43,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                              <rect stroke="null" id="svg_8" height="31" width="6" y="89.5" x="110.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                              <path stroke="null" id="svg_9" d="m101.2175,94.27062l12,-16l12,16l-24,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                              <path stroke="null" id="svg_10" d="m104.2175,84.27062l9,-18l9,18l-18,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                          </g>
+                      </svg>
+              
+                  </div>
+                  <div class="card">
+                      <div class="card-back">
+                          <div class="data-item">
+                              <h3>Feels like</h3><span id="feels_like"></span>
+                          </div>
+                          <div class="data-item">
+                              <h3>Temp min</h3><span id="temp_min">{{this.location1Report?.main.temp_min}}˚C</span>
+                          </div>
+                          <div class="data-item">
+                              <h3>Temp max</h3><span id="temp_max">{{this.location1Report?.main.temp_max}}˚C</span>
+                          </div>
+                          <div class="data-item">
+                              <h3>Pressure</h3><span id="pressure">{{this.location1Report?.main.pressure}} mb</span>
+                          </div>
+                          <div class="data-item">
+                              <h3>Humidity</h3><span id="humidity">{{this.location1Report?.main.humidity}}%</span>
+                          </div>
+                      </div>
+                  </div>
+              
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="container-op">
+  
+                  <div class="card">
+                      <main>
+                          <div class="srch_wrpr">
+                              <span class="text-red" *ngIf='location3Err' > Wrong city name </span>
+                              <input type="checkbox" name="" class="checkbox">
+                              <div class="srch_sb_cnt">
+                                  <input type="text" name="text_bar" [(ngModel)]="location3" id="" class="sech_txt_inpt" placeholder="Type to search...">
+                                  <button class="srch_btn" (click)="getWeatherReport(location3, 3)">
+                                      <i class="fa fa-search" aria-hidden="true"></i>
+                                  </button>
+                              </div>
+                          </div>
+                        </main>
+              
+                      <div class="card-body" id="bg-body">
+              
+                          <h1 class="card-title">
+                              <span id="header">{{this.location3 | titlecase}} </span>
+                              <span id="subText">{{this.location3Report?.main.temp}}˚C</span>
+                              
+                              <img *ngIf="this.location3Report" src="http://openweathermap.org/img/wn/{{this.location3Report?.weather[0].icon}}@2x.png">
+                          </h1>
+  
+                          <div class="middle">
+                              <div class="text">John Doe</div>
+                            </div>
+              
+                          <p class="card-text">
+                              <span id="relevant_info">
+                                  Its <strong>{{this.location3Report?.weather[0].main}}</strong> here !!!
+                              </span>
+                          </p>
+              
+                      </div>
+              
+                      <svg class="bg-svg" width="350" height="200">
+                          <g>
+                              <rect fill="none" id="canvas_background" height="202" width="352" y="-1" x="-1" />
+                              <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+                                  <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%" />
+                              </g>
+                          </g>
+                          <g>
+                              <ellipse ry="65" rx="286.5" id="svg_3" cy="162.5" cx="181" stroke-width="1.5" />
+                              <rect stroke="null" id="svg_4" height="47" width="12" y="74.5" x="68.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                              <path id="svg_6" d="m51.2175,87.27062l23,-35l23,35l-46,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="null" />
+                              <path stroke="null" id="svg_7" d="m52.2175,70.27062l21.5,-35l21.5,35l-43,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                              <rect stroke="null" id="svg_8" height="31" width="6" y="89.5" x="110.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                              <path stroke="null" id="svg_9" d="m101.2175,94.27062l12,-16l12,16l-24,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                              <path stroke="null" id="svg_10" d="m104.2175,84.27062l9,-18l9,18l-18,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                          </g>
+                      </svg>
+              
+                  </div>
+                  <div class="card">
+                      <div class="card-back">
+                          <div class="data-item">
+                              <h3>Feels like</h3><span id="feels_like"></span>
+                          </div>
+                          <div class="data-item">
+                              <h3>Temp min</h3><span id="temp_min">{{this.location3Report?.main.temp_min}}˚C</span>
+                          </div>
+                          <div class="data-item">
+                              <h3>Temp max</h3><span id="temp_max">{{this.location3Report?.main.temp_max}}˚C</span>
+                          </div>
+                          <div class="data-item">
+                              <h3>Pressure</h3><span id="pressure">{{this.location3Report?.main.pressure}} mb</span>
+                          </div>
+                          <div class="data-item">
+                              <h3>Humidity</h3><span id="humidity">{{this.location3Report?.main.humidity}}%</span>
+                          </div>
+                      </div>
+                  </div>
+              
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="container-op">
+  
+                  <div class="card">
+                      <main>
+                          <div class="srch_wrpr">
+                              <span class="text-red" *ngIf='location2Err' > Wrong city name </span>
+                              <input type="checkbox" name="" class="checkbox">
+                              <div class="srch_sb_cnt">
+                                  <input type="text" name="text_bar" [(ngModel)]="location2" id="" class="sech_txt_inpt" placeholder="Type to search...">
+                                  <button class="srch_btn" (click)="getWeatherReport(location2, 2)">
+                                      <i class="fa fa-search" aria-hidden="true"></i>
+                                  </button>
+                              </div>
+                          </div>
+                        </main>
+              
+                      <div class="card-body" id="bg-body">
+              
+                          <h1 class="card-title">
+                              <span id="header">{{this.location2 | titlecase}} </span>
+                              <span id="subText">{{this.location2Report?.main.temp}}˚C</span>
+                              
+                              <img *ngIf="this.location2Report" src="http://openweathermap.org/img/wn/{{this.location2Report?.weather[0].icon}}@2x.png">
+                          </h1>
+  
+                          <div class="middle">
+                              <div class="text">John Doe</div>
+                            </div>
+              
+                          <p class="card-text">
+                              <span id="relevant_info">
+                                  Its <strong>{{this.location2Report?.weather[0].main}}</strong> here !!!
+                              </span>
+                          </p>
+              
+                      </div>
+              
+                      <svg class="bg-svg" width="350" height="200">
+                          <g>
+                              <rect fill="none" id="canvas_background" height="202" width="352" y="-1" x="-1" />
+                              <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+                                  <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%" />
+                              </g>
+                          </g>
+                          <g>
+                              <ellipse ry="65" rx="286.5" id="svg_3" cy="162.5" cx="181" stroke-width="1.5" />
+                              <rect stroke="null" id="svg_4" height="47" width="12" y="74.5" x="68.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                              <path id="svg_6" d="m51.2175,87.27062l23,-35l23,35l-46,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="null" />
+                              <path stroke="null" id="svg_7" d="m52.2175,70.27062l21.5,-35l21.5,35l-43,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                              <rect stroke="null" id="svg_8" height="31" width="6" y="89.5" x="110.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                              <path stroke="null" id="svg_9" d="m101.2175,94.27062l12,-16l12,16l-24,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                              <path stroke="null" id="svg_10" d="m104.2175,84.27062l9,-18l9,18l-18,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                          </g>
+                      </svg>
+              
+                  </div>
+                  <div class="card">
+                      <div class="card-back">
+                          <div class="data-item">
+                              <h3>Feels like</h3><span id="feels_like"></span>
+                          </div>
+                          <div class="data-item">
+                              <h3>Temp min</h3><span id="temp_min">{{this.location2Report?.main.temp_min}}˚C</span>
+                          </div>
+                          <div class="data-item">
+                              <h3>Temp max</h3><span id="temp_max">{{this.location2Report?.main.temp_max}}˚C</span>
+                          </div>
+                          <div class="data-item">
+                              <h3>Pressure</h3><span id="pressure">{{this.location2Report?.main.pressure}} mb</span>
+                          </div>
+                          <div class="data-item">
+                              <h3>Humidity</h3><span id="humidity">{{this.location2Report?.main.humidity}}%</span>
+                          </div>
+                      </div>
+                  </div>
+              
+              </div>
+            </div>
+        </div>
+        <p>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle Weather Report</button>
+        </p>
+        <div class="row collapse multi-collapse2" id="multiCollapseExample2">
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="container-op">
+  
+                <div class="card">
+                    <main>
+                        <div class="srch_wrpr">
+                          <span class="text-red" *ngIf='location4Err' > Wrong city name </span>
+                            <input type="checkbox" name="" class="checkbox">
+                            <div class="srch_sb_cnt">
+                                <input type="text" name="text_bar" [(ngModel)]="location4" id="" class="sech_txt_inpt" placeholder="Type to search...">
+                                <button class="srch_btn" (click)="getWeatherReport(location4, 4)">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                      </main>
+            
+                    <div class="card-body" id="bg-body">
+            
+                        <h1 class="card-title">
+                            <span id="header">{{this.location4 | titlecase}} </span>
+                            <span id="subText">{{this.location4Report?.main.temp}}˚C</span>
+                            
+                            <img *ngIf="this.location4Report" src="http://openweathermap.org/img/wn/{{this.location4Report?.weather[0].icon}}@2x.png">
+                        </h1>
+  
+                        <div class="middle">
+                            <div class="text">John Doe</div>
+                          </div>
+            
+                        <p class="card-text">
+                            <span id="relevant_info">
+                                Its <strong>{{this.location4Report?.weather[0].main}}</strong> here !!!
+                            </span>
+                        </p>
+            
+                    </div>
+            
+                    <svg class="bg-svg" width="350" height="200">
+                        <g>
+                            <rect fill="none" id="canvas_background" height="202" width="352" y="-1" x="-1" />
+                            <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+                                <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%" />
+                            </g>
+                        </g>
+                        <g>
+                            <ellipse ry="65" rx="286.5" id="svg_3" cy="162.5" cx="181" stroke-width="1.5" />
+                            <rect stroke="null" id="svg_4" height="47" width="12" y="74.5" x="68.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                            <path id="svg_6" d="m51.2175,87.27062l23,-35l23,35l-46,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="null" />
+                            <path stroke="null" id="svg_7" d="m52.2175,70.27062l21.5,-35l21.5,35l-43,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                            <rect stroke="null" id="svg_8" height="31" width="6" y="89.5" x="110.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                            <path stroke="null" id="svg_9" d="m101.2175,94.27062l12,-16l12,16l-24,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                            <path stroke="null" id="svg_10" d="m104.2175,84.27062l9,-18l9,18l-18,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                        </g>
+                    </svg>
+            
+                </div>
+                <div class="card">
+                    <div class="card-back">
+                        <div class="data-item">
+                            <h3>Feels like</h3><span id="feels_like"></span>
+                        </div>
+                        <div class="data-item">
+                            <h3>Temp min</h3><span id="temp_min">{{this.location4Report?.main.temp_min}}˚C</span>
+                        </div>
+                        <div class="data-item">
+                            <h3>Temp max</h3><span id="temp_max">{{this.location4Report?.main.temp_max}}˚C</span>
+                        </div>
+                        <div class="data-item">
+                            <h3>Pressure</h3><span id="pressure">{{this.location4Report?.main.pressure}} mb</span>
+                        </div>
+                        <div class="data-item">
+                            <h3>Humidity</h3><span id="humidity">{{this.location4Report?.main.humidity}}%</span>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="container-op">
+  
+                <div class="card">
+                    <main>
+                        <div class="srch_wrpr">
+                          <span class="text-red" *ngIf='location5Err' > Wrong city name </span>
+                            <input type="checkbox" name="" class="checkbox">
+                            <div class="srch_sb_cnt">
+                                <input type="text" name="text_bar" [(ngModel)]="location5" id="" class="sech_txt_inpt" placeholder="Type to search...">
+                                <button class="srch_btn" (click)="getWeatherReport(location5, 5)">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                      </main>
+            
+                    <div class="card-body" id="bg-body">
+            
+                        <h1 class="card-title">
+                            <span id="header">{{this.location5 | titlecase}} </span>
+                            <span id="subText">{{this.location5Report?.main.temp}}˚C</span>
+                            
+                            <img *ngIf="this.location5Report" src="http://openweathermap.org/img/wn/{{this.location5Report?.weather[0].icon}}@2x.png">
+                        </h1>
+  
+                        <div class="middle">
+                            <div class="text">John Doe</div>
+                          </div>
+            
+                        <p class="card-text">
+                            <span id="relevant_info">
+                                Its <strong>{{this.location5Report?.weather[0].main}}</strong> here !!!
+                            </span>
+                        </p>
+            
+                    </div>
+            
+                    <svg class="bg-svg" width="350" height="200">
+                        <g>
+                            <rect fill="none" id="canvas_background" height="202" width="352" y="-1" x="-1" />
+                            <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+                                <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%" />
+                            </g>
+                        </g>
+                        <g>
+                            <ellipse ry="65" rx="286.5" id="svg_3" cy="162.5" cx="181" stroke-width="1.5" />
+                            <rect stroke="null" id="svg_4" height="47" width="12" y="74.5" x="68.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                            <path id="svg_6" d="m51.2175,87.27062l23,-35l23,35l-46,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="null" />
+                            <path stroke="null" id="svg_7" d="m52.2175,70.27062l21.5,-35l21.5,35l-43,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                            <rect stroke="null" id="svg_8" height="31" width="6" y="89.5" x="110.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                            <path stroke="null" id="svg_9" d="m101.2175,94.27062l12,-16l12,16l-24,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                            <path stroke="null" id="svg_10" d="m104.2175,84.27062l9,-18l9,18l-18,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                        </g>
+                    </svg>
+            
+                </div>
+                <div class="card">
+                    <div class="card-back">
+                        <div class="data-item">
+                            <h3>Feels like</h3><span id="feels_like"></span>
+                        </div>
+                        <div class="data-item">
+                            <h3>Temp min</h3><span id="temp_min">{{this.location5Report?.main.temp_min}}˚C</span>
+                        </div>
+                        <div class="data-item">
+                            <h3>Temp max</h3><span id="temp_max">{{this.location5Report?.main.temp_max}}˚C</span>
+                        </div>
+                        <div class="data-item">
+                            <h3>Pressure</h3><span id="pressure">{{this.location5Report?.main.pressure}} mb</span>
+                        </div>
+                        <div class="data-item">
+                            <h3>Humidity</h3><span id="humidity">{{this.location5Report?.main.humidity}}%</span>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="container-op">
+  
+                <div class="card">
+                    <main>
+                        <div class="srch_wrpr">
+                          <span class="text-red" *ngIf='location6Err' > Wrong city name </span>
+                            <input type="checkbox" name="" class="checkbox">
+                            <div class="srch_sb_cnt">
+                                <input type="text" name="text_bar" [(ngModel)]="location6" id="" class="sech_txt_inpt" placeholder="Type to search...">
+                                <button class="srch_btn" (click)="getWeatherReport(location6, 6)">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                      </main>
+            
+                    <div class="card-body" id="bg-body">
+            
+                        <h1 class="card-title">
+                            <span id="header">{{this.location6 | titlecase}} </span>
+                            <span id="subText">{{this.location6Report?.main.temp}}˚C</span>
+                            
+                            <img *ngIf="this.location6Report" src="http://openweathermap.org/img/wn/{{this.location6Report?.weather[0].icon}}@2x.png">
+                        </h1>
+  
+                        <div class="middle">
+                            <div class="text">John Doe</div>
+                          </div>
+            
+                        <p class="card-text">
+                            <span id="relevant_info">
+                                Its <strong>{{this.location6Report?.weather[0].main}}</strong> here !!!
+                            </span>
+                        </p>
+            
+                    </div>
+            
+                    <svg class="bg-svg" width="350" height="200">
+                        <g>
+                            <rect fill="none" id="canvas_background" height="202" width="352" y="-1" x="-1" />
+                            <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+                                <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%" />
+                            </g>
+                        </g>
+                        <g>
+                            <ellipse ry="65" rx="286.5" id="svg_3" cy="162.5" cx="181" stroke-width="1.5" />
+                            <rect stroke="null" id="svg_4" height="47" width="12" y="74.5" x="68.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                            <path id="svg_6" d="m51.2175,87.27062l23,-35l23,35l-46,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="null" />
+                            <path stroke="null" id="svg_7" d="m52.2175,70.27062l21.5,-35l21.5,35l-43,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                            <rect stroke="null" id="svg_8" height="31" width="6" y="89.5" x="110.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                            <path stroke="null" id="svg_9" d="m101.2175,94.27062l12,-16l12,16l-24,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                            <path stroke="null" id="svg_10" d="m104.2175,84.27062l9,-18l9,18l-18,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                        </g>
+                    </svg>
+            
+                </div>
+                <div class="card">
+                    <div class="card-back">
+                        <div class="data-item">
+                            <h3>Feels like</h3><span id="feels_like"></span>
+                        </div>
+                        <div class="data-item">
+                            <h3>Temp min</h3><span id="temp_min">{{this.location6Report?.main.temp_min}}˚C</span>
+                        </div>
+                        <div class="data-item">
+                            <h3>Temp max</h3><span id="temp_max">{{this.location6Report?.main.temp_max}}˚C</span>
+                        </div>
+                        <div class="data-item">
+                            <h3>Pressure</h3><span id="pressure">{{this.location6Report?.main.pressure}} mb</span>
+                        </div>
+                        <div class="data-item">
+                            <h3>Humidity</h3><span id="humidity">{{this.location6Report?.main.humidity}}%</span>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+          </div>
+          </div>
+          <p>
+              <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse3" aria-expanded="false" aria-controls="multiCollapseExample3">Toggle Weather Report</button>
+            </p>
+  
+        <div class="row collapse multi-collapse3" id="multiCollapseExample3">
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="container-op">
+  
+                <div class="card">
+                    <main>
+                        <div class="srch_wrpr">
+                          <span class="text-red" *ngIf='location7Err' > Wrong city name </span>
+                            <input type="checkbox" name="" class="checkbox">
+                            <div class="srch_sb_cnt">
+                                <input type="text" name="text_bar" [(ngModel)]="location7" id="" class="sech_txt_inpt" placeholder="Type to search...">
+                                <button class="srch_btn" (click)="getWeatherReport(location7, 7)">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                      </main>
+            
+                    <div class="card-body" id="bg-body">
+            
+                        <h1 class="card-title">
+                            <span id="header">{{this.location7 | titlecase}} </span>
+                            <span id="subText">{{this.location7Report?.main.temp}}˚C</span>
+                            
+                            <img *ngIf="this.location7Report" src="http://openweathermap.org/img/wn/{{this.location7Report?.weather[0].icon}}@2x.png">
+                        </h1>
+  
+                        <div class="middle">
+                            <div class="text">John Doe</div>
+                          </div>
+            
+                        <p class="card-text">
+                            <span id="relevant_info">
+                                Its <strong>{{this.location7Report?.weather[0].main}}</strong> here !!!
+                            </span>
+                        </p>
+            
+                    </div>
+            
+                    <svg class="bg-svg" width="350" height="200">
+                        <g>
+                            <rect fill="none" id="canvas_background" height="202" width="352" y="-1" x="-1" />
+                            <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+                                <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%" />
+                            </g>
+                        </g>
+                        <g>
+                            <ellipse ry="65" rx="286.5" id="svg_3" cy="162.5" cx="181" stroke-width="1.5" />
+                            <rect stroke="null" id="svg_4" height="47" width="12" y="74.5" x="68.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                            <path id="svg_6" d="m51.2175,87.27062l23,-35l23,35l-46,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="null" />
+                            <path stroke="null" id="svg_7" d="m52.2175,70.27062l21.5,-35l21.5,35l-43,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                            <rect stroke="null" id="svg_8" height="31" width="6" y="89.5" x="110.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                            <path stroke="null" id="svg_9" d="m101.2175,94.27062l12,-16l12,16l-24,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                            <path stroke="null" id="svg_10" d="m104.2175,84.27062l9,-18l9,18l-18,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                        </g>
+                    </svg>
+            
+                </div>
+                <div class="card">
+                    <div class="card-back">
+                        <div class="data-item">
+                            <h3>Feels like</h3><span id="feels_like"></span>
+                        </div>
+                        <div class="data-item">
+                            <h3>Temp min</h3><span id="temp_min">{{this.location7Report?.main.temp_min}}˚C</span>
+                        </div>
+                        <div class="data-item">
+                            <h3>Temp max</h3><span id="temp_max">{{this.location7Report?.main.temp_max}}˚C</span>
+                        </div>
+                        <div class="data-item">
+                            <h3>Pressure</h3><span id="pressure">{{this.location7Report?.main.pressure}} mb</span>
+                        </div>
+                        <div class="data-item">
+                            <h3>Humidity</h3><span id="humidity">{{this.location7Report?.main.humidity}}%</span>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="container-op">
+  
+                <div class="card">
+                    <main>
+                        <div class="srch_wrpr">
+                          <span class="text-red" *ngIf='location8Err' > Wrong city name </span>
+                            <input type="checkbox" name="" class="checkbox">
+                            <div class="srch_sb_cnt">
+                                <input type="text" name="text_bar" [(ngModel)]="location8" id="" class="sech_txt_inpt" placeholder="Type to search...">
+                                <button class="srch_btn" (click)="getWeatherReport(location8, 8)">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                      </main>
+            
+                    <div class="card-body" id="bg-body">
+            
+                        <h1 class="card-title">
+                            <span id="header">{{this.location8 | titlecase}} </span>
+                            <span id="subText">{{this.location8Report?.main.temp}}˚C</span>
+                            
+                            <img *ngIf="this.location8Report" src="http://openweathermap.org/img/wn/{{this.location8Report?.weather[0].icon}}@2x.png">
+                        </h1>
+  
+                        <div class="middle">
+                            <div class="text">John Doe</div>
+                          </div>
+            
+                        <p class="card-text">
+                            <span id="relevant_info">
+                                Its <strong>{{this.location8Report?.weather[0].main}}</strong> here !!!
+                            </span>
+                        </p>
+            
+                    </div>
+            
+                    <svg class="bg-svg" width="350" height="200">
+                        <g>
+                            <rect fill="none" id="canvas_background" height="202" width="352" y="-1" x="-1" />
+                            <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+                                <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%" />
+                            </g>
+                        </g>
+                        <g>
+                            <ellipse ry="65" rx="286.5" id="svg_3" cy="162.5" cx="181" stroke-width="1.5" />
+                            <rect stroke="null" id="svg_4" height="47" width="12" y="74.5" x="68.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                            <path id="svg_6" d="m51.2175,87.27062l23,-35l23,35l-46,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="null" />
+                            <path stroke="null" id="svg_7" d="m52.2175,70.27062l21.5,-35l21.5,35l-43,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                            <rect stroke="null" id="svg_8" height="31" width="6" y="89.5" x="110.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                            <path stroke="null" id="svg_9" d="m101.2175,94.27062l12,-16l12,16l-24,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                            <path stroke="null" id="svg_10" d="m104.2175,84.27062l9,-18l9,18l-18,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                        </g>
+                    </svg>
+            
+                </div>
+                <div class="card">
+                    <div class="card-back">
+                        <div class="data-item">
+                            <h3>Feels like</h3><span id="feels_like"></span>
+                        </div>
+                        <div class="data-item">
+                            <h3>Temp min</h3><span id="temp_min">{{this.location8Report?.main.temp_min}}˚C</span>
+                        </div>
+                        <div class="data-item">
+                            <h3>Temp max</h3><span id="temp_max">{{this.location8Report?.main.temp_max}}˚C</span>
+                        </div>
+                        <div class="data-item">
+                            <h3>Pressure</h3><span id="pressure">{{this.location8Report?.main.pressure}} mb</span>
+                        </div>
+                        <div class="data-item">
+                            <h3>Humidity</h3><span id="humidity">{{this.location8Report?.main.humidity}}%</span>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="container-op">
+  
+                <div class="card">
+                    <main>
+                        <div class="srch_wrpr">
+                          <span class="text-red" *ngIf='location9Err' > Wrong city name </span>
+                            <input type="checkbox" name="" class="checkbox">
+                            <div class="srch_sb_cnt">
+                                <input type="text" name="text_bar" [(ngModel)]="location9" id="" class="sech_txt_inpt" placeholder="Type to search...">
+                                <button class="srch_btn" (click)="getWeatherReport(location9, 9)">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                      </main>
+            
+                    <div class="card-body" id="bg-body">
+            
+                        <h1 class="card-title">
+                            <span id="header">{{this.location9 | titlecase}} </span>
+                            <span id="subText">{{this.location9Report?.main.temp}}˚C</span>
+                            
+                            <img *ngIf="this.location9Report" src="http://openweathermap.org/img/wn/{{this.location9Report?.weather[0].icon}}@2x.png">
+                        </h1>
+  
+                        <div class="middle">
+                            <div class="text">John Doe</div>
+                          </div>
+            
+                        <p class="card-text">
+                            <span id="relevant_info">
+                                Its <strong>{{this.location9Report?.weather[0].main}}</strong> here !!!
+                            </span>
+                        </p>
+            
+                    </div>
+            
+                    <svg class="bg-svg" width="350" height="200">
+                        <g>
+                            <rect fill="none" id="canvas_background" height="202" width="352" y="-1" x="-1" />
+                            <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+                                <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%" />
+                            </g>
+                        </g>
+                        <g>
+                            <ellipse ry="65" rx="286.5" id="svg_3" cy="162.5" cx="181" stroke-width="1.5" />
+                            <rect stroke="null" id="svg_4" height="47" width="12" y="74.5" x="68.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                            <path id="svg_6" d="m51.2175,87.27062l23,-35l23,35l-46,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="null" />
+                            <path stroke="null" id="svg_7" d="m52.2175,70.27062l21.5,-35l21.5,35l-43,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                            <rect stroke="null" id="svg_8" height="31" width="6" y="89.5" x="110.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                            <path stroke="null" id="svg_9" d="m101.2175,94.27062l12,-16l12,16l-24,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                            <path stroke="null" id="svg_10" d="m104.2175,84.27062l9,-18l9,18l-18,0z" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" />
+                        </g>
+                    </svg>
+            
+                </div>
+                <div class="card">
+                    <div class="card-back">
+                        <div class="data-item">
+                            <h3>Feels like</h3><span id="feels_like"></span>
+                        </div>
+                        <div class="data-item">
+                            <h3>Temp min</h3><span id="temp_min">{{this.location9Report?.main.temp_min}}˚C</span>
+                        </div>
+                        <div class="data-item">
+                            <h3>Temp max</h3><span id="temp_max">{{this.location9Report?.main.temp_max}}˚C</span>
+                        </div>
+                        <div class="data-item">
+                            <h3>Pressure</h3><span id="pressure">{{this.location9Report?.main.pressure}} mb</span>
+                        </div>
+                        <div class="data-item">
+                            <h3>Humidity</h3><span id="humidity">{{this.location9Report?.main.humidity}}%</span>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+          </div>
+          </div>
+        
+    </div>
+  </div>
+  
