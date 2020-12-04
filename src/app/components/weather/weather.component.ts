@@ -47,6 +47,8 @@ export class WeatherComponent implements OnInit {
   location8Err = 0;
   location9Err = 0;
 
+  loaderhere = 1;
+
   mySubscription: Subscription;
 
 
@@ -62,9 +64,12 @@ export class WeatherComponent implements OnInit {
     //   console.log( data );
     //   this.location1Report = data;
     // });
+    this.loaderhere = 0;
     
   }
   getWeatherReport(location, type){
+
+    this.loaderhere = 1;
 
     console.log( location )
     
@@ -106,7 +111,7 @@ export class WeatherComponent implements OnInit {
       console.log( 'error' )
       this.errorRep(type, 1)
     });
-    
+    this.loaderhere = 0;
   }
 
   errorRep(ty, ct){
@@ -143,6 +148,12 @@ export class WeatherComponent implements OnInit {
   }
 
   doStuff(){
+    this.loaderhere = 1;
+
+    setTimeout(()=>{                           //<<<---using ()=> syntax
+      this.loaderhere = 0;
+ }, 3000);
+
     if( this.location1 != '' && this.location1 !== undefined ){
       this.getWeatherReport(this.location1, 1)
     }
